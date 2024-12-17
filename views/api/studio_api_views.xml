@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- API Provider Views -->
+    <record id="view_studio_api_provider_form" model="ir.ui.view">
+        <field name="name">studio.api.provider.form</field>
+        <field name="model">studio.api.provider</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="code"/>
+                        <field name="base_url"/>
+                        <field name="auth_type"/>
+                        <field name="headers_template"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- API Connection Views -->
+    <record id="view_studio_api_connection_form" model="ir.ui.view">
+        <field name="name">studio.api.connection.form</field>
+        <field name="model">studio.api.connection</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_test_connection" 
+                            string="Test Connection" 
+                            type="object" 
+                            class="btn-primary"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="provider_id"/>
+                        <field name="api_key" password="True"/>
+                        <field name="endpoint"/>
+                        <field name="active"/>
+                    </group>
+                    <group>
+                        <field name="last_status"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

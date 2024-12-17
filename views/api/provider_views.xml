@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- OpenAI Provider Form View -->
+    <record id="view_openai_provider_form" model="ir.ui.view">
+        <field name="name">studio.api.provider.openai.form</field>
+        <field name="model">studio.api.provider.openai</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="model"/>
+                        <field name="max_tokens"/>
+                        <field name="temperature"/>
+                        <field name="api_key" password="True"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- GerenciaNet Provider Form View -->
+    <record id="view_gerencianet_provider_form" model="ir.ui.view">
+        <field name="name">studio.api.provider.gerencianet.form</field>
+        <field name="model">studio.api.provider.gerencianet</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="sandbox_mode"/>
+                        <field name="client_id"/>
+                        <field name="client_secret" password="True"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Menu Items -->
+    <menuitem id="menu_api_providers"
+              name="API Providers"
+              parent="menu_studio_configuration"
+              sequence="20"/>
+
+    <menuitem id="menu_openai_provider"
+              name="OpenAI"
+              parent="menu_api_providers"
+              action="action_openai_provider"
+              sequence="10"/>
+
+    <menuitem id="menu_gerencianet_provider"
+              name="GerenciaNet"
+              parent="menu_api_providers"
+              action="action_gerencianet_provider"
+              sequence="20"/>
+</odoo>

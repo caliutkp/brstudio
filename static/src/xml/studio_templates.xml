@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="StudioField">
+        <div class="studio-field-widget">
+            <div class="field-properties">
+                <input type="text" class="field-name" placeholder="Field Name"/>
+                <select class="field-type">
+                    <option value="char">Text</option>
+                    <option value="integer">Integer</option>
+                    <option value="float">Float</option>
+                    <option value="date">Date</option>
+                    <option value="datetime">DateTime</option>
+                    <option value="boolean">Boolean</option>
+                    <option value="many2one">Many2One</option>
+                    <option value="one2many">One2Many</option>
+                    <option value="many2many">Many2Many</option>
+                </select>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="StudioViewEditor">
+        <div class="studio-view-editor">
+            <div class="toolbar">
+                <div class="components-panel">
+                    <div class="field-component" draggable="true" 
+                         t-foreach="fieldTypes" t-as="field" 
+                         t-att-data-field-type="field.type">
+                        <t t-esc="field.label"/>
+                    </div>
+                </div>
+            </div>
+            <div class="view-container" t-att-data-view-type="viewType">
+                <!-- View content will be rendered here -->
+            </div>
+            <button class="save-view">Save View</button>
+        </div>
+    </t>
+</templates>

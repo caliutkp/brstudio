@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_studio_api_connection_form" model="ir.ui.view">
+        <field name="name">studio.api.connection.form</field>
+        <field name="model">studio.api.connection</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_test_connection" 
+                            string="Test Connection" 
+                            type="object" 
+                            class="btn-primary"
+                            attrs="{'invisible': [('state', '=', 'validated')]}"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name" placeholder="Connection Name"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="provider_id"/>
+                            <field name="api_key" password="True"/>
+                            <field name="endpoint"/>
+                        </group>
+                        <group>
+                            <field name="retry_count"/>
+                            <field name="timeout"/>
+                            <field name="active"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Status Information" name="status">
+                            <group>
+                                <field name="last_status"/>
+                            </group>
+                        </page>
+                        <page string="Response History" name="history">
+                            <field name="response_ids">
+                                <tree>
+                                    <field name="create_date"/>
+                                    <field name="request_method"/>
+                                    <field name="response_code"/>
+                                    <field name="duration"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>
